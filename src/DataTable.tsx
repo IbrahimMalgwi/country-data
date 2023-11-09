@@ -6,12 +6,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import React, { useState } from "react";
-import countryData from "../public/countryData.json";
-
+import countryData from "../public/countryData";
 
 const DataTable = () => {
   const [create, setCreate] = useState(countryData);
   console.log("create ", create);
+
+  const [filter, setFilter] = useState({ continent: "", hasStates: "" });
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilter({ ...filter, [name]: value });
+  };
 
   return (
     <TableContainer component={Paper}>
