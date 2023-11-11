@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import DataTable from './DataTable.tsx';
-import TableData from "./TableData.tsx";
+import EnhancedTable from "./EnhancedTable.tsx";
 
 
 function App() {  
@@ -10,7 +10,8 @@ function App() {
     
       <h1>Material-UI Table with Filter and Sort</h1>
       {/* <DataTable />      */}
-      <TableData />
+      <EnhancedTable />
+      
        
     </>
   )
