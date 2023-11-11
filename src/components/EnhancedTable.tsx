@@ -20,7 +20,7 @@ import Tooltip from "@mui/material/Tooltip";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
-import countryData from "../public/countryData";
+import countryData from "../../public/countryData.json";
 
 interface Country {
   id: string;
@@ -178,15 +178,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
     <TableHead>
       <TableRow>
         <TableCell padding="checkbox">
-          <Checkbox
-            color="primary"
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{
-              "aria-label": "select all desserts",
-            }}
-          />
+          {/*  */}
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell
@@ -271,6 +263,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
   );
 }
 const EnhancedTable = () => {
+  const [create, setCreate] = useState<Country[]>(countryData.countries);
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<keyof Data>("calories");
   const [selected, setSelected] = React.useState<readonly number[]>([]);

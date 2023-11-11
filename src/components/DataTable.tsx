@@ -8,7 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import React, { useMemo, useState } from "react";
-import countryData from "../public/countryData";
+import countryData from "../../public/countryData.json";
 
 interface Country {
   id: string;
@@ -90,7 +90,7 @@ const DataTable = () => {
           {filteredResult.map((row) => (
             <TableRow
               key={row.id}
-              // sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
                 {row.id}

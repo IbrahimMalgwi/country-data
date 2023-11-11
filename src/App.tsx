@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import DataTable from './DataTable.tsx';
-import EnhancedTable from "./EnhancedTable.tsx";
+import DataTable from './components/DataTable.tsx';
+import EnhancedTable from "./components/EnhancedTable.tsx";
 
 
 function App() {  
