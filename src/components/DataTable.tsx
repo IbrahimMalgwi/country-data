@@ -1,17 +1,18 @@
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
-import TableSortLabel from "@mui/material/TableSortLabel";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import TableSortLabel from "@mui/material/TableSortLabel";
 import React, { useMemo, useState } from "react";
-import countryData from "../utils/countryData.json";
+import FilterIcon from "../assets/images/FilterOne.svg";
+import FilterDownIcon from "../assets/images/FilterTwo.svg";
+import "../styles/DataTable.css";
 import { Country } from "../types";
-import FilterIcon from '../assets/images/FilterOne.svg';
-import FilterDownIcon from '../assets/images/FilterTwo.svg'
+import countryData from "../utils/countryData.json";
 
 const DataTable = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,7 @@ const DataTable = () => {
   const [order, setOrder] = useState<"ASC" | "DESC" | undefined>();
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFilter({ ...filter, [name]: value });
   };
 
@@ -51,15 +52,15 @@ const DataTable = () => {
 
   const handleIsOpen = () => {
     isOpen ? setIsOpen(false) : setIsOpen(true);
-  }
+  };
 
   const handleIsContinent = () => {
     isContinent ? setIsContinent(false) : setIsContinent(true);
-  }
+  };
 
   const handleIsHasStates = () => {
     isHasState ? setIsHasState(false) : setIsHasState(true);
-  }
+  };
 
   const filterHasStates = useMemo(() => {
     if (isHasState) {
@@ -83,15 +84,21 @@ const DataTable = () => {
       <TableCell align="right">{row.continent}</TableCell>
       <TableCell align="right">{row.hasStates}</TableCell>
     </TableRow>
-  ))
+  ));
 
   return (
     <TableContainer component={Paper}>
       <div>
-        <img src={!isOpen ? FilterIcon : FilterDownIcon} alt="Filter Icon" onClick={handleIsOpen} />
+        <img
+          className="drop_down_img"
+          src={!isOpen ? FilterIcon : FilterDownIcon}
+          alt="Filter Icon"
+          onClick={handleIsOpen}
+        />
         {isOpen && (
-          <ul>
-            <li onClick={handleIsContinent}>Continent
+          <ul className="drop_down">
+            <li onClick={handleIsContinent}>
+              Continent
               {isContinent && (
                 <select
                   name="continent"
@@ -121,15 +128,15 @@ const DataTable = () => {
             <TableCell align="right">name</TableCell>
             <TableCell align="right">
               nameUn
-              <button onClick={() => setOrder("ASC")}>{order === "ASC" ? "ASC" : "DESC"}</button>
+              <button className="btn_" onClick={() => setOrder("ASC")}>
+                {order === "ASC" ? "ASC" : "DESC"}
+              </button>
             </TableCell>
             <TableCell align="right">continent</TableCell>
             <TableCell align="right">hasStates</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {tableItems}
-        </TableBody>
+        <TableBody>{tableItems}</TableBody>
       </Table>
     </TableContainer>
   );
