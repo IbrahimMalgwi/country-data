@@ -3,11 +3,18 @@
    list-style-type: none 
 }
 .drop_down_img{
-   height: 2rem;
+   height: 3rem;
    margin-left: 86%;
+   cursor: pointer;
 }
+
 .btn_{
-   position: absolute;
+   position: relative;
    top: 21%;
    left: 67%;
+   cursor: pointer;
+}
+
+li{
+   cursor: pointer;
 }

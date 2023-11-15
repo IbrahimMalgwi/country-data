@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -6,7 +5,6 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import TableSortLabel from "@mui/material/TableSortLabel";
 import React, { useMemo, useState } from "react";
 import FilterIcon from "../assets/images/FilterOne.svg";
 import FilterDownIcon from "../assets/images/FilterTwo.svg";
@@ -62,6 +60,13 @@ const DataTable = () => {
     isHasState ? setIsHasState(false) : setIsHasState(true);
   };
 
+  const handleHasStatesDisplay = (value: boolean) => {
+    return value ? "True" : "False";
+  };
+
+  const handleItemOrder = () => {
+    return order === "ASC" ? setOrder("DESC") : setOrder("ASC");
+  };
   const filterHasStates = useMemo(() => {
     if (isHasState) {
       return filteredResult.filter((state) => state.hasStates === true);
@@ -82,9 +87,13 @@ const DataTable = () => {
       <TableCell align="right">{row.name}</TableCell>
       <TableCell align="right">{row.nameUn}</TableCell>
       <TableCell align="right">{row.continent}</TableCell>
-      <TableCell align="right">{row.hasStates}</TableCell>
+      <TableCell align="right">
+        {handleHasStatesDisplay(row.hasStates)}
+      </TableCell>{" "}    
     </TableRow>
   ));
+  
+
 
   return (
     <TableContainer component={Paper}>
@@ -128,15 +137,14 @@ const DataTable = () => {
             <TableCell align="right">name</TableCell>
             <TableCell align="right">
               nameUn
-              <button className="btn_" onClick={() => setOrder("ASC")}>
-                {order === "ASC" ? "ASC" : "DESC"}
-              </button>
+              <button onClick={handleItemOrder}>{order}</button> 
             </TableCell>
             <TableCell align="right">continent</TableCell>
             <TableCell align="right">hasStates</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>{tableItems}</TableBody>
+              
       </Table>
     </TableContainer>
   );
