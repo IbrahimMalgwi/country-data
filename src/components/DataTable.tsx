@@ -74,7 +74,7 @@ const DataTable = () => {
       return filteredResult;
     }
   }, [filteredResult, isHasState]);
-
+  
   const tableItems = filterHasStates.map((row) => (
     <TableRow
       key={row.id}
@@ -89,11 +89,9 @@ const DataTable = () => {
       <TableCell align="right">{row.continent}</TableCell>
       <TableCell align="right">
         {handleHasStatesDisplay(row.hasStates)}
-      </TableCell>{" "}    
+      </TableCell>{" "}
     </TableRow>
   ));
-  
-
 
   return (
     <TableContainer component={Paper}>
@@ -137,7 +135,9 @@ const DataTable = () => {
             <TableCell align="right">name</TableCell>
             <TableCell align="right">
               nameUn
-              <button onClick={handleItemOrder}>{order}</button> 
+              <button className="btn_" onClick={handleItemOrder}>
+                {order}
+              </button>
             </TableCell>
             <TableCell align="right">continent</TableCell>
             <TableCell align="right">hasStates</TableCell>

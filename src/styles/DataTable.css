@@ -9,7 +9,7 @@
 }
 
 .btn_{
-   position: relative;
+   position: absolute;
    top: 21%;
    left: 67%;
    cursor: pointer;
